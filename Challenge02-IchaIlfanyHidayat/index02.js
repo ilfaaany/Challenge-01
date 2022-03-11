@@ -245,13 +245,13 @@
 //       bukuterlaris = dataPenjualan[i].namaProduk;
 //       terjual = dataPenjualan[i].totalTerjual;
 //     }
-//     //array penulis
+//    //array penulis
 //     if (!penulis.includes(dataPenjualan[i].penulis)) {
 //       penulis.push(dataPenjualan[i].penulis);
 //     }
 //   }
 
-//   //penulis terlaris
+//    //penulis terlaris
 //   let a = [];
 //   for (let j = 0; j < penulis.length; j++) {
 //     let b = {};
