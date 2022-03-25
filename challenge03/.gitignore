@@ -1,0 +1,7 @@
+# node modules
+node_modules
+*.swp
+
+# lock file
+package-lock.json
+yarn.lock
