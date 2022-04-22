@@ -1,23 +1,22 @@
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Search from "./components/Search";
 import Card from "./components/Card";
+import Layout from "./components/Layout";
 import DetailCard from "./components/DetailCard";
+import DetailPesanan from "./components/DetailPesanan";
 import { Routes, Route } from "react-router";
+// import Hero from "./components/Hero";
+// import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Search></Search>
-
       <Routes>
-        <Route path="/car" element={<Card />} />
-        <Route path="/car/:carId" element={<DetailCard />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/car" element={<Card />} />
+          <Route path="/car/:carId" element={<DetailCard />} />
+          <Route path="/car/detail-pesanan" element={<DetailPesanan />} />
+        </Route>
       </Routes>
-
-      <Footer></Footer>
     </div>
   );
 }

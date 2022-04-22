@@ -1,34 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
-import axios from "axios";
+import { fetchItems, setButton } from "../redux/actions/itemActions";
 import Cars from "./Cars";
 
 const Card = () => {
-  const [cars, setCars] = useState([]);
+  const btn = useSelector((state) => state.buttonText.buttonText);
+  const cars = useSelector((state) => state.cars.items);
+  console.log(cars);
+  const dispatch = useDispatch();
 
-  const getCars = async () => {
-    const res = await axios.get("https://rent-cars-api.herokuapp.com/customer/car");
-    console.log(res);
-    setCars(res.data);
-  };
   useEffect(() => {
-    getCars();
-  }, []);
+    dispatch(setButton("Pilih Mobil"));
+    dispatch(fetchItems());
+  });
 
   return (
-    <Grid container MaxWidth="lg" mt={2} px={1} mx="auto">
-      {cars ? (
-        cars.map((car) => {
-          return (
-            <Grid item xs={12} sm={6} lg={4} key={car.id}>
-              <Cars item={car} />
-            </Grid>
-          );
-        })
-      ) : (
-        <Typography>Empty List</Typography>
-      )}
-    </Grid>
+    <div>
+      <Grid container justifyContent="center">
+        {/* {cars ? ( */}
+        {typeof cars !== "undefined" ? (
+          cars.map((item) => {
+            return (
+              <Grid elevation={0} spacing={1} item key={item.id}>
+                <Cars item={item} />
+              </Grid>
+            );
+          })
+        ) : (
+          <Typography>Empty List</Typography>
+        )}
+      </Grid>
+    </div>
   );
 };
 
